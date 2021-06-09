@@ -7,20 +7,20 @@ import math
 def string_checker(choice, options, error):
     for var_list in options:
 
-        # if the snack is in one of the lists, return the full list
+        # if the shape is in one of the lists, return the full list
         if choice in var_list:
 
-            # Get full name of snack and put it in title case
+            # Get full name of shape and put it in title case
             # so it looks nice when out putted
             chosen = choice.title()
             is_valid = "yes"
             break
 
-        # if the chosen snack is not valid, set snack_ok to no
+        # if the chosen shape is not valid
         else:
             is_valid = "no"
 
-    # If snack is not OK - ask question again
+    # If shape is not OK - ask question again
     if is_valid == "yes":
         return chosen
     else:
