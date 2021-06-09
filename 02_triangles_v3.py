@@ -1,5 +1,6 @@
 # Component 2 - implementing triangles
 # v2 - puts some required input fields in the function to shorten the main routine and implement the number checker in.
+# v3 - change up some wording to make the program more usable
 
 import math
 
@@ -58,7 +59,7 @@ def triangle():
             continue 
 
         # Find what the user is given
-        info = input("What do you know about the triangle (bh or abc)? ")
+        info = input("What do you know about the triangle [Base and height(bh)] or [the side lengths(abc)]? ")
         info_check = string_checker(info, ["bh", "abc"], "Please say either 'bh' for base and height or abc for side lengths")
         if info_check == "invalid_choice":
             continue
@@ -68,7 +69,7 @@ def triangle():
         if info_check == "Bh":
             # If the user is looking for perimeter
             if outcome_check == "perimeter":
-                            print("I can't find the perimeter with only base and height because I don't have enough information")
+                            print("I can't find the perimeter with only base and height")
                             return "Unable to calculate"
             # If the user is looking for area
             else:

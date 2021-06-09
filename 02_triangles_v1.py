@@ -69,7 +69,7 @@ def triangle(info_type, result):
             # When user want perimeter
             else:
                 perimeter = a + b + c
-                print("The area of your triangle is {}".format(perimeter))
+                print("The perimeter of your triangle is {}".format(perimeter))
                 # return incase I need to use it in a list later on
                 return("triangle", a, b, c, perimeter)
 

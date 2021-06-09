@@ -5,20 +5,20 @@
 def string_checker(choice, options, error):
     for var_list in options:
 
-        # if the snack is in one of the lists, return the full list
+        # if the shape is in one of the lists, return the full list
         if choice in var_list:
 
-            # Get full name of snack and put it in title case
+            # Get full name of shape and put it in title case
             # so it looks nice when out putted
             chosen = var_list[0].title()
             is_valid = "yes"
             break
 
-        # if the chosen snack is not valid, set snack_ok to no
+        # if the chosen shape is not valid
         else:
             is_valid = "no"
 
-    # If snack is not OK - ask question again
+    # If shape is not OK - ask question again
     if is_valid == "yes":
         return chosen
     else:
@@ -27,16 +27,12 @@ def string_checker(choice, options, error):
 
 
 # Main Routine
-shape_types = ["square", "rectangle", "parallelogram", "triangle", "circle", "trapezium"]
+valid_names = [["henry"], ["aref"], ["jt"]]
 
-what_shape = input("What shape do you want? ").lower()
-check_shape = string_checker(what_shape, shape_types, "Please enter a real shape")
+# For loop for testing purposes
+for item in range(0,4):
 
-print(check_shape)
+    name = input("Hello, what's your name? ").lower()
+    name_check = string_checker(name, valid_names, "Please enter a real name")
 
-results = ["area", "perimeter"]
-
-what_result = input("Do you want area or perimeter? ").lower()
-check_what_result = string_checker(what_result, results, "Please enter either area or perimeter")
-
-print(check_what_result)
+    print(name_check)
