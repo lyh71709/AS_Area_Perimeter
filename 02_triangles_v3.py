@@ -4,7 +4,7 @@
 
 import math
 
-# Number checker function goes here
+# number checker function goes here
 # Checks that it is not 0 and is a number
 def number_checker(question, error, num_type):
     valid = False
@@ -26,12 +26,16 @@ def number_checker(question, error, num_type):
 def string_checker(choice, options, error):
     for var_list in options:
 
+        # Blank case
+        if choice == "":
+            is_valid = "no"
+            break 
         # if the shape is in one of the lists, return the full list
-        if choice in var_list:
+        elif choice in var_list:
 
             # Get full name of shape and put it in title case
             # so it looks nice when out putted
-            chosen = var_list[0].title()
+            chosen = var_list.title()
             is_valid = "yes"
             break
 
@@ -43,7 +47,7 @@ def string_checker(choice, options, error):
     if is_valid == "yes":
         return chosen
     else:
-        print(error + "\n")
+        print(error)
         return "invalid choice"
 
 # triangle function goes here
@@ -55,36 +59,39 @@ def triangle():
         # Find what the user is looking for
         outcome = input("What do you want to find (Area or Perimeter)? ")
         outcome_check = string_checker(outcome, ["area", "perimeter"], "This must be either Area or Perimeter")
-        if outcome_check == "invalid_choice":  
+        print(outcome_check)
+        if outcome_check == "invalid choice":  
             continue 
 
         # Find what the user is given
         info = input("What do you know about the triangle [Base and height(bh)] or [the side lengths(abc)]? ")
         info_check = string_checker(info, ["bh", "abc"], "Please say either 'bh' for base and height or abc for side lengths")
-        if info_check == "invalid_choice":
+        if info_check == "invalid choice":
             continue
+
+        print(info_check)
 
         # ------------- Calculations -------------
         # If base and height is given
         if info_check == "Bh":
             # If the user is looking for perimeter
-            if outcome_check == "perimeter":
+            if outcome_check == "Perimeter":
                             print("I can't find the perimeter with only base and height")
                             return "Unable to calculate"
             # If the user is looking for area
             else:
-                base = number_checker("What is the base? ", "Please enter a numeber bigger than 0", float)
-                height = number_checker("What is the height? ", "Please enter a numeber bigger than 0", float)
+                base = number_checker("What is the base? ", "Please enter a number bigger than 0", float)
+                height = number_checker("What is the height? ", "Please enter a number bigger than 0", float)
                 
                 area = 0.5 * base * height
                 print("The area of your triangle is {:.2f}".format(area))
         # If triangle side lengths are given
         else:
-            a = number_checker("What is the length of a? ", "Please enter a numeber bigger than 0", float)
-            b = number_checker("What is the length of b? ", "Please enter a numeber bigger than 0", float)
-            c = number_checker("What is the length of c? ", "Please enter a numeber bigger than 0", float)
+            a = number_checker("What is the length of a? ", "Please enter a number bigger than 0", float)
+            b = number_checker("What is the length of b? ", "Please enter a number bigger than 0", float)
+            c = number_checker("What is the length of c? ", "Please enter a number bigger than 0", float)
             # If user wants the area
-            if outcome == "area":
+            if outcome == "Area":
                 s = (a + b + c) / 2
                 area = math.sqrt(s * (s-a) * (s-b) * (s-c))
                 print("The area of your triangle is {:.2f}".format(area))
@@ -92,11 +99,12 @@ def triangle():
             else:
                 perimeter = a + b + c
                 print("The perimeter of your triangle is {:.2f}".format(perimeter))
-        # return this until I put in a lsit for history
-        return("triangle", a, b, c, )
+        # return this until I put in a list for history
+        return ""
 
 
 # Main Routine
+# Set the shape as triangle to make testing easier seeing as how this is the triangle component
 what_shape = "Triangle"
 
 # Triangle Scenario

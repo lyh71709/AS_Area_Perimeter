@@ -21,12 +21,16 @@ def number_checker(question, error, num_type):
 def string_checker(choice, options, error):
     for var_list in options:
 
+        # Blank case
+        if choice == "":
+            is_valid = "no"
+            break 
         # if the shape is in one of the lists, return the full list
-        if choice in var_list:
+        elif choice in var_list:
 
             # Get full name of shape and put it in title case
             # so it looks nice when out putted
-            chosen = choice.title()
+            chosen = var_list[0].title()
             is_valid = "yes"
             break
 
@@ -38,5 +42,5 @@ def string_checker(choice, options, error):
     if is_valid == "yes":
         return chosen
     else:
-        print(error + "\n")
+        print(error)
         return "invalid choice"
