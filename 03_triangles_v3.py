@@ -59,7 +59,6 @@ def triangle():
         # Find what the user is looking for
         outcome = input("What do you want to find (Area or Perimeter)? ")
         outcome_check = string_checker(outcome, ["area", "perimeter"], "This must be either Area or Perimeter")
-        print(outcome_check)
         if outcome_check == "invalid choice":  
             continue 
 
@@ -68,8 +67,6 @@ def triangle():
         info_check = string_checker(info, ["bh", "abc"], "Please say either 'bh' for base and height or abc for side lengths")
         if info_check == "invalid choice":
             continue
-
-        print(info_check)
 
         # ------------- Calculations -------------
         # If base and height is given
@@ -107,6 +104,9 @@ def triangle():
 # Set the shape as triangle to make testing easier seeing as how this is the triangle component
 what_shape = "Triangle"
 
-# Triangle Scenario
-if what_shape == "Triangle":
-    result = triangle()
+# Loop for testing purposes
+for item in range(0,4):
+    # Triangle Scenario
+    if what_shape == "Triangle":
+        result = triangle()
+    print()
