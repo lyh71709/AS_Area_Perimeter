@@ -1,4 +1,4 @@
-# Component 2 - implementing triangles
+# Component 3 - implementing triangles
 # v2 - puts some required input fields in the function to shorten the main routine and implement the number checker in.
 
 import math

@@ -1,4 +1,4 @@
-# Component 2 - implementing triangles
+# Component 3 - implementing triangles
 
 import math
 
