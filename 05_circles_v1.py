@@ -1,4 +1,4 @@
-# Component 4 - implement rectangle function
+# Component 5 - implement circles function
 
 import math
 
@@ -48,33 +48,42 @@ def string_checker(choice, options, error):
         print(error)
         return "invalid choice"
 
-# rectangle function goes here
-# Find the base and height then calculate area and perimeter
-def rectangle():
+# circle function goes here
+# Find the radius or diameter then calculate area and circumference
+def circle():
     valid = False
     while not valid:
         
-        base = number_checker("What is the base? ", "Please enter a number above 0", float)
-        height = number_checker("What is the height? ", "Please enter a number above 0", float)
+        # Find what the user is given
+        info = input("What do you know about the circle [radius(r)] or [diameter(d)]? ")
+        info_check = string_checker(info, ["r", "d"], "Please say either 'r' for radius or 'd' for diameter")
+        if info_check == "invalid choice":
+            continue
 
         # ------------- Calculations -------------
-        area = base * height
-        perimeter = (2 * base) + (2 * height)
-
-        if base == height:
-            squ_or_rec = "square"
+        # Diameter case
+        if info_check.lower() == "d":
+            radius = number_checker("What is the diameter? ", "Please enter a number above 0", float)
+            r = radius / 2
+        # Radius Case
         else:
-            squ_or_rec = "rectangle"
+            radius = number_checker("What is the radius? ", "Please enter a number above 0", float)
+            r = radius
+            
+        circumference = 2 * (math.pi) * r
+        area = (math.pi) * r**2
 
-        print("The area of your {} is {:.2f}".format(squ_or_rec, area))
-        print("The perimeter of your {} is {:.2f}".format(squ_or_rec, perimeter))
+        print("The area of your circle is {:.2f}".format(area))
+        print("The circumference of your circle is {:.2f}".format(circumference))
         print()
+
+    # return this until I put in a list for history
+    return ""
 
 # Main Routine
 
-what_shape = "Rectangle"
+what_shape = "circle"
 
-# loop for testing purposes
 for item in range(0,1):
-    if what_shape == "Rectangle":
-        result = rectangle()
+    if what_shape == "circle":
+        result = circle()
