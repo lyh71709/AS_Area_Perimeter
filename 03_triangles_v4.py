@@ -59,7 +59,7 @@ def triangle():
     while not valid:
 
         # Find what the user is given
-        info = input("What do you know about the triangle [Base and height(bh)] or [the side lengths(abc)]? ")
+        info = input("What do you know about the triangle [Base and height(bh)] or [the side lengths(abc)]? ").lower()
         info_check = string_checker(info, ["bh", "abc"], "Please say either 'bh' for base and height or 'abc' for side lengths")
         if info_check == "invalid choice":
             continue

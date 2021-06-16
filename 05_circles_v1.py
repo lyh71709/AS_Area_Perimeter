@@ -55,12 +55,11 @@ def circle():
     while not valid:
         
         # Find what the user is given
-        info = input("What do you know about the circle [radius(r)] or [diameter(d)]? ")
+        info = input("What do you know about the circle [radius(r)] or [diameter(d)]? ").lower()
         info_check = string_checker(info, ["r", "d"], "Please say either 'r' for radius or 'd' for diameter")
         if info_check == "invalid choice":
             continue
 
-        # ------------- Calculations -------------
         # Diameter case
         if info_check.lower() == "d":
             radius = number_checker("What is the diameter? ", "Please enter a number above 0", float)
@@ -69,7 +68,8 @@ def circle():
         else:
             radius = number_checker("What is the radius? ", "Please enter a number above 0", float)
             r = radius
-            
+        
+        # ------------- Calculations -------------
         circumference = 2 * (math.pi) * r
         area = (math.pi) * r**2
 
