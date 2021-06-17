@@ -90,8 +90,8 @@ def triangle():
             print("The area of your triangle is {:.2f}".format(area))
             print("The perimeter of your triangle is {:.2f}".format(perimeter))
 
-    # return this until I put in a list for history
-    return ""
+        # return this until I put in a list for history
+        return ""
 
 
 # Main Routine
@@ -99,7 +99,7 @@ def triangle():
 what_shape = "Triangle"
 
 # Loop for testing purposes
-for item in range(0,4):
+for item in range(0,1):
     # Triangle Scenario
     if what_shape == "Triangle":
         result = triangle()

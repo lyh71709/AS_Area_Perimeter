@@ -70,6 +70,9 @@ def rectangle():
         print("The perimeter of your {} is {:.2f}".format(squ_or_rec, perimeter))
         print()
 
+        # return this until I put in a list for history
+        return ""
+
 # Main Routine
 
 what_shape = "Rectangle"

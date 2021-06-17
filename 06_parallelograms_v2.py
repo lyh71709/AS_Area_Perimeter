@@ -61,25 +61,27 @@ def parallelogram():
             continue
         
         base = number_checker("What is the base? ", "Please enter a number above 0", float)
-
-        # ------------- Calculations -------------
         if info_check == "A":
             height = number_checker("What is the height? ", "Please enter a number above 0", float)
-            area = base * height
-            print("The area of your parallelogram is {:.2f}".format(area))
+            side = 0
         elif info_check == "P":
             side = number_checker("What is the side length? ", "Please enter a number above 0", float)
-            perimeter = 2 * (side + base)
-            print("The perimeter of your parallelogram is {:.2f}".format(perimeter))
+            height = 0
         else:
             height = number_checker("What is the height? ", "Please enter a number above 0", float)
             side = number_checker("What is the side length? ", "Please enter a number above 0", float)
-            area = base * height
-            perimeter = 2 * (side + base)
-            print("The area of your parallelogram is {:.2f}".format(area))
-            print("The perimeter of your parallelogram is {:.2f}".format(perimeter))
-        print()
+        
+        area = base * height
+        perimeter = 2 * (side + base)
 
+        if side != 0:
+            print("The perimeter of your parallelogram is {:.2f}".format(perimeter))
+        elif height != 0:
+            print("The area of your parallelogram is {:.2f}".format(area))
+        else:
+            print("error")
+        print()
+        
         # return this until I put in a list for history
         return ""
 
