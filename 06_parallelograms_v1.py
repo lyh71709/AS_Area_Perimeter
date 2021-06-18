@@ -60,18 +60,25 @@ def parallelogram():
         if info_check == "invalid choice":
             continue
         
+        # Get base
         base = number_checker("What is the base? ", "Please enter a number above 0", float)
 
         # ------------- Calculations -------------
+        # Only area scenario
         if info_check == "A":
+            # Find only height and area
             height = number_checker("What is the height? ", "Please enter a number above 0", float)
             area = base * height
             print("The area of your parallelogram is {:.2f}".format(area))
+        # Only perimeter scenario
         elif info_check == "P":
+            # Find only side and perimeter
             side = number_checker("What is the side length? ", "Please enter a number above 0", float)
             perimeter = 2 * (side + base)
             print("The perimeter of your parallelogram is {:.2f}".format(perimeter))
+        # Both cases
         else:
+            # Find height and side as well as area and perimeter
             height = number_checker("What is the height? ", "Please enter a number above 0", float)
             side = number_checker("What is the side length? ", "Please enter a number above 0", float)
             area = base * height

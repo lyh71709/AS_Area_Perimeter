@@ -19,8 +19,10 @@ def get_shape():
         desired_shape = input("What shape do you want? ").lower()
         check_shape = string_checker(desired_shape, valid_shapes, "Please enter a real shape")
 
+        # When invalid choice
         if check_shape == "invalid choice":
             continue
+        # t can be either triangle or trapezium so ask to specify
         elif desired_shape == "t":
             print("Can you specify either triangle or trapezium\n")
             continue

@@ -68,6 +68,7 @@ def triangle():
         # If base and height is given
         if info_check == "Bh":
 
+            # Find Base and height
             base = number_checker("What is the base? ", "Please enter a number bigger than 0", float)
             height = number_checker("What is the height? ", "Please enter a number bigger than 0", float)
                 
@@ -78,6 +79,7 @@ def triangle():
 
         # If triangle side lengths are given
         else:
+            # Find triangle side lengths
             a = number_checker("What is the length of a? ", "Please enter a number bigger than 0", float)
             b = number_checker("What is the length of b? ", "Please enter a number bigger than 0", float)
             c = number_checker("What is the length of c? ", "Please enter a number bigger than 0", float)

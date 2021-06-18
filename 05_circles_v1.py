@@ -63,6 +63,7 @@ def circle():
         # Diameter case
         if info_check.lower() == "d":
             radius = number_checker("What is the diameter? ", "Please enter a number above 0", float)
+            # radius is diameter divided by 2
             r = radius / 2
         # Radius Case
         else:

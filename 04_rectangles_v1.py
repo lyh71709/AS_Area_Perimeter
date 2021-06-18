@@ -54,6 +54,7 @@ def rectangle():
     valid = False
     while not valid:
         
+        # Get base and height
         base = number_checker("What is the base? ", "Please enter a number above 0", float)
         height = number_checker("What is the height? ", "Please enter a number above 0", float)
 
@@ -61,11 +62,13 @@ def rectangle():
         area = base * height
         perimeter = (2 * base) + (2 * height)
 
+        # Check if it is a square
         if base == height:
             squ_or_rec = "square"
         else:
             squ_or_rec = "rectangle"
 
+        # Print with appropriate shape name
         print("The area of your {} is {:.2f}".format(squ_or_rec, area))
         print("The perimeter of your {} is {:.2f}".format(squ_or_rec, perimeter))
         print()
