@@ -33,7 +33,7 @@ def string_checker(choice, options, error):
 
             # Get full name of shape and put it in title case
             # so it looks nice when out putted
-            chosen = var_list.title()
+            chosen = var_list[0].title()
             is_valid = "yes"
             break
 
@@ -56,7 +56,7 @@ def circle():
         
         # Find what the user is given
         info = input("What do you know about the circle [radius(r)] or [diameter(d)]? ").lower()
-        info_check = string_checker(info, ["r", "d"], "Please say either 'r' for radius or 'd' for diameter")
+        info_check = string_checker(info, [["r"], ["d"]], "Please say either 'r' for radius or 'd' for diameter")
         if info_check == "invalid choice":
             continue
 

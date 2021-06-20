@@ -16,7 +16,7 @@ def string_checker(choice, options, error):
 
             # Get full name of shape and put it in title case
             # so it looks nice when out putted
-            chosen = var_list.title()
+            chosen = var_list[0].title()
             is_valid = "yes"
             break
 
@@ -80,22 +80,18 @@ def triangle(info_type, result):
 
 # Main Routine
 
-# Set up shape types
-shape_types = ["square", "rectangle", "parallelogram", "triangle", "circle", "trapezium"]
-
-# Get the shape type
-what_shape = input("What shape do you want? ").lower()
-check_shape = string_checker(what_shape, shape_types, "Please enter a real shape")
+# Set triangle because it is triangle component
+what_shape = "Triangle"
 
 # Triangle scenario
-if check_shape == "Triangle":
+if what_shape == "Triangle":
 
     # Find out what information the user wants
     triangle_outcome = input("What do you want to find (Area or Perimeter)? ")
-    triangle_outcome_check = string_checker(triangle_outcome, ["area", "perimeter"], "This must be either Area or Perimeter")
+    triangle_outcome_check = string_checker(triangle_outcome, [["area"], ["perimeter"]], "This must be either Area or Perimeter")
     print()
 
     # Find out what the user knows
     triangle_info = input("What do you know about the triangle (bh or abc)? ")
-    triangle_info_check = string_checker(triangle_info, ["bh", "abc"], "Please say either 'bh' for base and height or abc for side lengths")
+    triangle_info_check = string_checker(triangle_info, [["bh"], ["abc"]], "Please say either 'bh' for base and height or abc for side lengths")
     triangle_calc = triangle(triangle_info_check, triangle_outcome)

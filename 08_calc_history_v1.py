@@ -1,7 +1,5 @@
-# Component 3 - implementing triangles
-# v2 - puts some required input fields in the function to shorten the main routine and implement the number checker in.
-# v3 - change up some wording to make the program more usable
-# v4 - doesn't ask for area or perimeter and just prints both
+# Component 8 - Making a calculation history and print it at the end of the program
+# Only put in triangles and rectangles
 
 import math
 
@@ -51,6 +49,65 @@ def string_checker(choice, options, error):
         print(error)
         return "invalid choice"
 
+# get_shape function goes here
+# get the desired shape
+def get_shape():
+
+    # Possible Shapes
+    valid_shapes = [["square", "squ", "s"],
+                    ["rectangle", "rec", "r"],
+                    ["triangle", "tri", "t"],
+                    ["circle", "cir", "c"],
+                    ["parallelogram", "par", "p"],
+                    ["trapezium", "tra", "t"]]
+
+    valid = False
+    while not valid:
+
+        # Find the shape
+        desired_shape = input("What shape do you want? ").lower()
+        check_shape = string_checker(desired_shape, valid_shapes, "Please enter a real shape")
+
+        # When invalid choice
+        if check_shape == "invalid choice":
+            continue
+        # t can be either triangle or trapezium so ask to specify
+        elif desired_shape == "t":
+            print("Can you specify either triangle or trapezium\n")
+            continue
+        else:
+            break
+
+    return check_shape
+
+# rectangle function goes here
+# Find the base and height then calculate area and perimeter
+def rectangle():
+    valid = False
+    while not valid:
+        
+        # Get base and height
+        base = number_checker("What is the base? ", "Please enter a number above 0", float)
+        height = number_checker("What is the height? ", "Please enter a number above 0", float)
+
+        # ------------- Calculations -------------
+        area = base * height
+        perimeter = (2 * base) + (2 * height)
+
+        # Check if it is a square
+        if base == height:
+            squ_or_rec = "square"
+        else:
+            squ_or_rec = "rectangle"
+
+        # Print with appropriate shape name
+        print("The area of your {} is {:.2f}".format(squ_or_rec, area))
+        print("The perimeter of your {} is {:.2f}".format(squ_or_rec, perimeter))
+        print()
+
+        # return this until I put in a list for history
+        return [["Rectangle"], [base], [height], [area], [perimeter]]
+
 # triangle function goes here
 # Figures out what the question gives and calculates the area and perimeter
 def triangle():
@@ -73,6 +130,7 @@ def triangle():
             height = number_checker("What is the height? ", "Please enter a number bigger than 0", float)
                 
             area = 0.5 * base * height
+            perimeter = "couldn't find"
 
             print("The area of your triangle is {:.2f}".format(area))
             print("I can't find the perimeter with only base and height")
@@ -95,14 +153,21 @@ def triangle():
         # return this until I put in a list for history
         return ""
 
-
 # Main Routine
-# Set the shape as triangle to make testing easier seeing as how this is the triangle component
-what_shape = "Triangle"
+history = []
 
-# Loop for testing purposes
-for item in range(0,1):
-    # Triangle Scenario
-    if what_shape == "Triangle":
+keep_going = ""
+while keep_going == "":
+    what_shape = get_shape()
+
+    if what_shape == "Rectangle":
+            result = rectangle()
+    else:
         result = triangle()
-    print()
+
+    history.append(result)
+    keep_going = input("\nIf you want to continue press enter or any other key to quit: ")
+
+for item in history:
+    
+    

@@ -34,7 +34,7 @@ def string_checker(choice, options, error):
 
             # Get full name of shape and put it in title case
             # so it looks nice when out putted
-            chosen = var_list.title()
+            chosen = var_list[0].title()
             is_valid = "yes"
             break
 
@@ -57,13 +57,13 @@ def triangle():
     while not valid:
         # Find what the user is looking for
         outcome = input("What do you want to find (Area or Perimeter)? ")
-        outcome_check = string_checker(outcome, ["area", "perimeter"], "This must be either Area or Perimeter")
+        outcome_check = string_checker(outcome, [["area"], ["perimeter"]], "This must be either Area or Perimeter")
         if outcome_check == "invalid_choice":  
             continue 
 
         # Find what the user is given
         info = input("What do you know about the triangle (bh or abc)? ")
-        info_check = string_checker(info, ["bh", "abc"], "Please say either 'bh' for base and height or abc for side lengths")
+        info_check = string_checker(info, [["bh"], ["abc"]], "Please say either 'bh' for base and height or abc for side lengths")
         if info_check == "invalid_choice":
             continue
         
