@@ -1,5 +1,5 @@
 # Component 8 - Making a calculation history and print it at the end of the program
-# Only put in triangles and rectangles
+# v2 - Use pandas dataframes and inplement all the shapes
 
 import math
 import pandas
