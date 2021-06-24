@@ -1,5 +1,6 @@
 # Component 9 - Add instructions to make code more usable
 
+
 # string_checker function goes here
 # Ensures that an input is within the possible results
 def string_checker(choice, options, error):
@@ -8,7 +9,7 @@ def string_checker(choice, options, error):
         # Blank case
         if choice == "":
             is_valid = "no"
-            break 
+            break
         # if the shape is in one of the lists, return the full list
         elif choice in var_list:
 
@@ -29,30 +30,37 @@ def string_checker(choice, options, error):
         print(error)
         return "invalid choice"
 
+
+# instructions funtion goes here
+# Asks if user wants instructions then print accordingly
 def instructions():
     print("========== Welcome to the Area and Perimeter Calcualtor ==========\n")
-    print("HENRYB0T: Hello, My Name is HENRYB0T\n")
-    
+    print(" 🤖 HENRYB⚙T: Hello, My Name is HENRYB⚙T\n")
+
     valid = False
     while not valid:
-        need_instructions = input("HENRYB0T: would you like me to show you the instructions? ")
-        need_instructions_check = string_checker(need_instructions, [[["yes"],["y"]], [["no"],["n"]]], "Please Enter Yes or No")
-
-        print(need_instructions_check)
+        need_instructions = input(" 🤖 HENRYB⚙T: Would you like me to show you the instructions? ").lower()
+        need_instructions_check = string_checker(need_instructions, [["yes","y"], ["no","n"]], " 🤖 HENRYB⚙T: Please Enter Yes or No\n")
+        if need_instructions_check == "invalid choice":
+            continue
 
         if need_instructions_check == "No":
-            print("HENRYB0T: Fine")
-            print("HENRYB0T: Have Fun, I will shut up now")
-            break
+            print(" 🤖 HENRYB⚙T: Fine (┬┬﹏┬┬)")
+            print(" 🤖 HENRYB⚙T: Have Fun, I will shut up now")
+            return ""
         else:
-            print("HENRYB0T: Okay then... \n"
-                  "HENRYB0T: This program will calculate the area and perimeter of almost any shape you want.\n"
-                  "              The available shapes are [Triangle, Rectangle, Circle, Parallelogram and Trapeziums.\n"
-                  "              You can enter the first letter or the first three letters, for example `c` or `cir` for circle.\n"
-                  "              Or you can jsut put in the whole name but remember to spell it correctly.")
-            print("HENRYB0T: Depending on what shape you do I will need different types of information or else i can't do the\n"
+            print(" 🤖 HENRYB⚙T: Okay then... O(∩_∩)O\n\n"
+                  " 🤖 HENRYB⚙T: This program will calculate the area and perimeter of almost any shape you want.\n"
+                  "              The available shapes are [Triangle, Square, Rectangle, Circle, Parallelogram and Trapeziums.\n"
+                  "              You can enter the first letter or the first three letters, for example 'c' or 'cir' for circle.\n"
+                  "              or you can jsut put in the whole name but remember to spell it correctly.")
+            print(" 🤖 HENRYB⚙T: Depending on what shape you do I will need different types of information or else I can't do the\n"
                   "              calculations so make sure you have it.")
+            print(" 🤖 HENRYB⚙T: After a calculation the program will ask if you want to keep going, so just press enter if you do \n"
+                  "              or put in any key then enter to stop. After you have stopped the code will print out a table of your calculations \n"
+                  "              so you can go over them again.")
+            return ""
+
 
 # Main Routine
-
 have_instruction = instructions()
