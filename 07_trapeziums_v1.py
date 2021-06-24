@@ -59,6 +59,7 @@ def trapezium():
         # Find what the user is looking for
         info = input("What do you want to find out [Area(a)] or [Perimeter(p)] or [Both(ap)]? ").lower()
         info_check = string_checker(info, [["a "], [" p"], ["ap"]], "Please say either 'a' for area or 'p' for perimeter")
+        print(info_check)
         if info_check == "invalid choice":
             continue
         

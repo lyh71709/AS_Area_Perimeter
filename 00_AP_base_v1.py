@@ -3,6 +3,7 @@
 import math
 import pandas
 
+
 # number checker function goes here
 # Checks that it is not 0 and is a number
 def number_checker(question, error, num_type):
@@ -19,6 +20,7 @@ def number_checker(question, error, num_type):
 
         except ValueError:
             print(error)
+
 
 # string_checker function goes here
 # Ensures that an input is within the possible results
@@ -48,6 +50,7 @@ def string_checker(choice, options, error):
     else:
         print(error)
         return "invalid choice"
+
 
 # get_shape function goes here
 # get the desired shape
@@ -80,6 +83,7 @@ def get_shape():
 
     return check_shape
 
+
 # rectangle function goes here
 # Find the base and height then calculate area and perimeter
 def rectangle():
@@ -107,6 +111,7 @@ def rectangle():
 
         # return this for use in history
         return ["Rectangle", area, perimeter, recorded_info]
+
 
 # triangle function goes here
 # Figures out what the question gives and calculates the area and perimeter
@@ -155,6 +160,7 @@ def triangle():
         # return this for use in history
         return ["Triangle", area, perimeter, recorded_info]
 
+
 # circle function goes here
 # Find the radius or diameter then calculate area and circumference
 def circle():
@@ -189,6 +195,7 @@ def circle():
 
         # return this for use in history
         return ["Circle", area, circumference, recorded_info]
+
 
 # parallelogram function goes here
 # Find the base, height and side length then calculate area and perimeter
@@ -237,6 +244,7 @@ def parallelogram():
         print()
         # return this for use in history
         return ["Parallelogram", area, perimeter, recorded_info]
+
 
 # trapezium function goes here
 # Find the base, height and side length then calculate area and perimeter
@@ -289,18 +297,61 @@ def trapezium():
         # return this for use in history
         return ["Trapezium", area, perimeter, recorded_info]
 
+
+# instructions funtion goes here
+# Asks if user wants instructions then print accordingly
+def instructions():
+    print("========== Welcome to the Area and Perimeter Calcualtor ==========\n")
+    print(" 🤖 HENRYB⚙T: Hello, My Name is HENRYB⚙T\n")
+
+    valid = False
+    while not valid:
+        need_instructions = input(" 🤖 HENRYB⚙T: Would you like me to show you the instructions? ").lower()
+        need_instructions_check = string_checker(need_instructions, [["yes", "y"], ["no", "n"]],
+                                                 " 🤖 HENRYB⚙T: Please Enter Yes or No\n")
+        if need_instructions_check == "invalid choice":
+            continue
+
+        if need_instructions_check == "No":
+            print(" 🤖 HENRYB⚙T: Fine (┬┬﹏┬┬)")
+            print(" 🤖 HENRYB⚙T: Have Fun, I will shut up now\n")
+            return ""
+        else:
+            print(" 🤖 HENRYB⚙T: Okay then... O(∩_∩)O\n\n"
+                  " 🤖 HENRYB⚙T: This program will calculate the area and perimeter of almost any shape you want.\n"
+                  "              The available shapes are [Triangle, Square, Rectangle, Circle, Parallelogram and Trapeziums.\n"
+                  "              You can enter the first letter or the first three letters, for example 'c' or 'cir' for circle.\n"
+                  "              or you can jsut put in the whole name but remember to spell it correctly.")
+            print(
+                " 🤖 HENRYB⚙T: Depending on what shape you do I will need different types of information or else I can't do the\n"
+                "              calculations so make sure you have it.")
+            print(
+                " 🤖 HENRYB⚙T: After a calculation the program will ask if you want to keep going, so just press enter if you do \n"
+                "              or put in any key then enter to stop. After you have stopped the code will print out a table of your calculations \n"
+                "              so you can go over them again.")
+            return ""
+
+
 # Main Routine
 history = []
 calc_num = 0
+
+have_instruction = instructions()
 
 keep_going = ""
 while keep_going == "":
     what_shape = get_shape()
 
-    if what_shape == "Rectangle":
-            result = rectangle()
-    else:
+    if what_shape == "triangle":
         result = triangle()
+    elif what_shape == "Rectangle":
+        result = rectangle()
+    elif what_shape == "Circle":
+        result = circle()
+    elif what_shape == "Parallelogram":
+        result = parallelogram()
+    else:
+        result = trapezium()
 
     history.append(result)
     keep_going = input("\nIf you want to continue press enter or any other key to quit: ")
