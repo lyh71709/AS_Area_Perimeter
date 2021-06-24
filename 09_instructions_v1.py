@@ -1,4 +1,5 @@
 # Component 9 - Add instructions to make code more usable
+# v1 has emojis because emojis work on pycharm and not visual studio for some reason
 
 
 # string_checker function goes here
