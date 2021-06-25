@@ -331,7 +331,6 @@ def instructions():
 
 # Main Routine
 history = []
-calc_num = 0
 
 clear = lambda:os.system('cls')
 clear()

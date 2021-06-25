@@ -292,13 +292,12 @@ def trapezium():
 
 # Main Routine
 history = []
-calc_num = 0
 
 keep_going = ""
 while keep_going == "":
     what_shape = get_shape()
 
-    if what_shape == "Rectangle":
+    if what_shape == "Rectangle" or what_shape == "Square":
             result = rectangle()
     else:
         result = triangle()
@@ -311,3 +310,4 @@ print("=============== History ===============\n")
 history_frame = pandas.DataFrame(history, columns=["Shape", "Area", "Perimeter", "Info"])
 
 print(history_frame)
+print()
