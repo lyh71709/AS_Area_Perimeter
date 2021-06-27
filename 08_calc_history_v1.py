@@ -157,19 +157,24 @@ def triangle():
 history = []
 calc_num = 0
 
+# Keep going loop
 keep_going = ""
 while keep_going == "":
     what_shape = get_shape()
 
+    # Just do rectangle and triangle for testing purposes
     if what_shape == "Rectangle":
             result = rectangle()
     else:
         result = triangle()
 
+    # Append results to a history list for later printing
     history.append(result)
     keep_going = input("\nIf you want to continue press enter or any other key to quit: ")
 
+# Printing Area
 print("==================== History ====================\n")
+# History method is to just loop a print statement until it prints the whole history
 for item in history:
     calc_num += 1
     print("{}| Shape: {} | Area: {} | Perimeter: {}".format(calc_num, item[0], item[3], item[4]))

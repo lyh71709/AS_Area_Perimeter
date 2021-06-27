@@ -2,7 +2,6 @@
 
 import math
 import pandas
-import os
 
 
 # number checker function goes here
@@ -325,15 +324,13 @@ def instructions():
             print(" HENRYB0T: After a calculation the program will ask if you want to keep going, so just press enter if you do \n"
                   "            or put in any key then enter to stop. After you have stopped the code will print out a table of your calculations \n"
                   "            so you can go over them again.")
+            print(" HENRYB0T: Remember to not use this program to cheat in any test and use it only for education purposes. :)")
         print(" HENRYB0T: Enjoy the program and get calculating!\n" 
               " HENRYB0T: Have Fun, I will shut up now\n")
         return ""
 
 # Main Routine
 history = []
-
-clear = lambda:os.system('cls')
-clear()
 
 have_instruction = instructions()
 
@@ -343,7 +340,7 @@ while keep_going == "":
 
     if what_shape == "triangle":
         result = triangle()
-    elif what_shape == "Rectangle":
+    elif what_shape == "Rectangle" or what_shape == "Square":
         result = rectangle()
     elif what_shape == "Circle":
         result = circle()

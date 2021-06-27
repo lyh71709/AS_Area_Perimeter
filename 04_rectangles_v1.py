@@ -54,5 +54,5 @@ what_shape = "Rectangle"
 
 # loop for testing purposes
 for item in range(0,1):
-    if what_shape == "Rectangle":
+    if what_shape == "Rectangle" or what_shape == "Square":
         result = rectangle()

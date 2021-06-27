@@ -1,8 +1,10 @@
-# Component 8 - Making a calculation history and print it at the end of the program
-# v2 - Use pandas dataframes and inplement all the shapes
+# Area And Perimeter Base Code
+# v2 - implement os and clear to make the  look cleaner
 
 import math
 import pandas
+import os
+
 
 # number checker function goes here
 # Checks that it is not 0 and is a number
@@ -20,6 +22,7 @@ def number_checker(question, error, num_type):
 
         except ValueError:
             print(error)
+
 
 # string_checker function goes here
 # Ensures that an input is within the possible results
@@ -49,6 +52,7 @@ def string_checker(choice, options, error):
     else:
         print(error)
         return "invalid choice"
+
 
 # get_shape function goes here
 # get the desired shape
@@ -81,6 +85,7 @@ def get_shape():
 
     return check_shape
 
+
 # rectangle function goes here
 # Find the base and height then calculate area and perimeter
 def rectangle():
@@ -108,6 +113,7 @@ def rectangle():
 
         # return this for use in history
         return ["Rectangle", area, perimeter, recorded_info]
+
 
 # triangle function goes here
 # Figures out what the question gives and calculates the area and perimeter
@@ -156,6 +162,7 @@ def triangle():
         # return this for use in history
         return ["Triangle", area, perimeter, recorded_info]
 
+
 # circle function goes here
 # Find the radius or diameter then calculate area and circumference
 def circle():
@@ -191,6 +198,7 @@ def circle():
         # return this for use in history
         return ["Circle", area, circumference, recorded_info]
 
+
 # parallelogram function goes here
 # Find the base, height and side length then calculate area and perimeter
 def parallelogram():
@@ -199,7 +207,7 @@ def parallelogram():
 
         # Find what the user is looking for
         info = input("What do you want to find out [Area(a)] or [Perimeter(p)] or [Both(ap)]? ").lower()
-        info_check = string_checker(info, [["a "], [" p"], ["ap"]], "Please say either 'a' for area or 'p' for perimeter")
+        info_check = string_checker(info, [["a ", "a"], [" p", "p"], ["ap"]], "Please say either 'a' for area or 'p' for perimeter")
         if info_check == "invalid choice":
             continue
         
@@ -239,6 +247,7 @@ def parallelogram():
         # return this for use in history
         return ["Parallelogram", area, perimeter, recorded_info]
 
+
 # trapezium function goes here
 # Find the base, height and side length then calculate area and perimeter
 def trapezium():
@@ -247,7 +256,7 @@ def trapezium():
 
         # Find what the user is looking for
         info = input("What do you want to find out [Area(a)] or [Perimeter(p)] or [Both(ap)]? ").lower()
-        info_check = string_checker(info, [["a "], [" p"], ["ap"]], "Please say either 'a' for area or 'p' for perimeter")
+        info_check = string_checker(info, [["a ", "a"], [" p", "p"], ["ap"]], "Please say either 'a' for area or 'p' for perimeter")
         if info_check == "invalid choice":
             continue
         
@@ -290,28 +299,66 @@ def trapezium():
         # return this for use in history
         return ["Trapezium", area, perimeter, recorded_info]
 
+
+# instructions funtion goes here
+# Asks if user wants instructions then print accordingly
+def instructions():
+    print("========== Welcome to the Area and Perimeter Calcualtor ==========\n")
+    print(" HENRYB0T: Hello, My Name is HENRYB0T\n")
+
+    valid = False
+    while not valid:
+        need_instructions = input(" HENRYB0T: Would you like me to show you the instructions? ").lower()
+        need_instructions_check = string_checker(need_instructions, [["yes","y"], ["no","n"]], " HENRYB0T: Please Enter Yes or No\n")
+        if need_instructions_check == "invalid choice":
+            continue
+
+        if need_instructions_check == "No":
+            print(" HENRYB0T: Fine")
+        else:
+            print(" HENRYB0T: Okay then...\n\n"
+                  " HENRYB0T: This program will calculate the area and perimeter of almost any shape you want.\n"
+                  "            The available shapes are [Triangle, Square, Rectangle, Circle, Parallelogram and Trapeziums.\n"
+                  "            You can enter the first letter or the first three letters, for example 'c' or 'cir' for circle.\n"
+                  "            or you can jsut put in the whole name but remember to spell it correctly.")
+            print(" HENRYB0T: Depending on what shape you do I will need different types of information or else I can't do the\n"
+                  "            calculations so make sure you have it.")
+            print(" HENRYB0T: After a calculation the program will ask if you want to keep going, so just press enter if you do \n"
+                  "            or put in any key then enter to stop. After you have stopped the code will print out a table of your calculations \n"
+                  "            so you can go over them again.")
+            print(" HENRYB0T: Remember to not use this program to cheat in any test and use it only for education purposes. :)")
+        print(" HENRYB0T: Enjoy the program and get calculating!\n" 
+              " HENRYB0T: Have Fun, I will shut up now\n")
+        return ""
+
 # Main Routine
 history = []
 
-# Keep going loop
+clear = lambda:os.system('cls')
+clear()
+
+have_instruction = instructions()
+
 keep_going = ""
 while keep_going == "":
     what_shape = get_shape()
 
-    # Only rectangle and triangle for testing purposes
-    if what_shape == "Rectangle" or what_shape == "Square":
-            result = rectangle()
-    else:
+    if what_shape == "triangle":
         result = triangle()
+    elif what_shape == "Rectangle" or what_shape == "Square":
+        result = rectangle()
+    elif what_shape == "Circle":
+        result = circle()
+    elif what_shape == "Parallelogram":
+        result = parallelogram()
+    else:
+        result = trapezium()
 
-    # Append results to a history lsit for later printing
     history.append(result)
     keep_going = input("\nIf you want to continue press enter or any other key to quit: ")
 
 print()
 print("=============== History ===============\n")
-# Make a dataframe
 history_frame = pandas.DataFrame(history, columns=["Shape", "Area", "Perimeter", "Info"])
 
 print(history_frame)
-print()
