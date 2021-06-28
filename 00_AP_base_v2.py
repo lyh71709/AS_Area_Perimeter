@@ -178,6 +178,7 @@ def circle():
         # Diameter case
         if info_check.lower() == "d":
             diameter = number_checker("What is the diameter? ", "Please enter a number above 0", float)
+            print(" HENRYB0T: Did You know that diameter is double the radius of the circle? So all you need to do to find the radius is hafl the diameter :)")
             # radius is diameter divided by 2
             r = diameter / 2
             recorded_info = ("Diameter: {}".format(diameter))
@@ -353,7 +354,7 @@ while keep_going == "":
     what_shape = get_shape()
 
     # Checks if it is a Triangle
-    if what_shape == "triangle":
+    if what_shape == "Triangle":
         result = triangle()
     # Checks if it is a rectangle or square
     elif what_shape == "Rectangle" or what_shape == "Square":
