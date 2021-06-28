@@ -1,4 +1,5 @@
 # Component 4 - implement rectangle function
+# v2 - rename the print statement to square if the base == height
 
 import math
 
@@ -34,9 +35,15 @@ def rectangle():
         area = base * height
         perimeter = (2 * base) + (2 * height)
 
+        # Check if it is a square
+        if base == height:
+            squ_or_rec = "square"
+        else:
+            squ_or_rec = "rectangle"
+
         # Print with appropriate shape name
-        print("The area of your rectangle is {:.2f}".format(area))
-        print("The perimeter of your rectangle is {:.2f}".format(perimeter))
+        print("The area of your {} is {:.2f}".format(squ_or_rec, area))
+        print("The perimeter of your {} is {:.2f}".format(squ_or_rec, perimeter))
         print()
 
         # return this until I put in a list for history
