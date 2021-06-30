@@ -50,22 +50,23 @@ def instructions():
         # No scenario
         if need_instructions_check == "No":
             print(" 🤖 HENRYB⚙T: Fine (┬┬﹏┬┬)")
-            print(" 🤖 HENRYB⚙T: Have Fun, I will shut up now")
-            return ""
         # Yes scenario
         else:
-            print(" 🤖 HENRYB⚙T: Okay then... O(∩_∩)O\n\n"
+            print(" 🤖 HENRYB⚙T: Okay then...\n\n"
                   " 🤖 HENRYB⚙T: This program will calculate the area and perimeter of almost any shape you want.\n"
-                  "              The available shapes are [Triangle, Square, Rectangle, Circle, Parallelogram and Trapeziums.\n"
-                  "              You can enter the first letter or the first three letters, for example 'c' or 'cir' for circle.\n"
-                  "              or you can jsut put in the whole name but remember to spell it correctly.")
+                  "            The available shapes are [Triangle, Square, Rectangle, Circle, Parallelogram and Trapeziums.\n"
+                  "            You can enter the first letter or the first three letters, for example 'c' or 'cir' for circle.\n"
+                  "            or you can jsut put in the whole name but remember to spell it correctly.")
             print(" 🤖 HENRYB⚙T: Depending on what shape you do I will need different types of information or else I can't do the\n"
-                  "              calculations so make sure you have it.")
+                  "            calculations so make sure you have it.")
             print(" 🤖 HENRYB⚙T: After a calculation the program will ask if you want to keep going, so just press enter if you do \n"
-                  "              or put in any key then enter to stop. After you have stopped the code will print out a table of your calculations \n"
-                  "              so you can go over them again.")
-            # Return nothing because nothing is needed
-            return ""
+                  "            or put in any key then enter to stop. After you have stopped the code will print out a table of your calculations \n"
+                  "            so you can go over them again.")
+            print(" 🤖 HENRYB⚙T: Remember to not use this program to cheat in any test and use it only for education purposes. :)")
+        print(" 🤖 HENRYB⚙T: Enjoy the program and get calculating!\n" 
+              " 🤖 HENRYB⚙T: Have Fun, I will shut up now\n")
+        # Return nothing because nothing is needed
+        return ""
 
 
 # Main Routine
