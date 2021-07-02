@@ -1,5 +1,7 @@
 # Component 6 - implement parallelogram function
-
+# v2 - The previous component was just a basic three if conditions and then ask accordingly
+#      But I prefer this method because personally even though it might basically be the same length it is more clean and neat.
+# v3 - Found a problem where the function finds both area and perimeter regardless of what the user wants
 
 # number checker function goes here
 # Checks that it is not 0 and is a number
@@ -54,38 +56,44 @@ def parallelogram():
     while not valid:
 
         # Find what the user is looking for
-        info = input("What do you want to find out [Area(a)] or [Perimeter(p)] or [Both(b)]? ").lower()
-        info_check = string_checker(info, [["a"], ["p"], ["b"]], "Please say either 'a' for area or 'p' for perimeter")
+        info = input("What do you want to find out [Area(a)] or [Perimeter(p)] or [Both(ap)]? ").lower()
+        info_check = string_checker(info, [["a ", "a"], [" p", "p"], ["ap"]], "Please say either 'a' for area or 'p' for perimeter")
         if info_check == "invalid choice":
             continue
         
-        # Get base
+        # base is needed in all cases so it is outside the if statement
         base = number_checker("What is the base? ", "Please enter a number above 0", float)
-
-        # ------------- Calculations -------------
-        # Only area scenario
-        if info_check == "A":
-            # Find only height and area
+        # Check if user wants area
+        if info_check[0] == "A":
             height = number_checker("What is the height? ", "Please enter a number above 0", float)
-            area = base * height
-            print("The area of your parallelogram is {:.2f}".format(area))
-        # Only perimeter scenario
-        elif info_check == "P":
-            # Find only side and perimeter
-            side = number_checker("What is the side length? ", "Please enter a number above 0", float)
-            perimeter = 2 * (side + base)
-            print("The perimeter of your parallelogram is {:.2f}".format(perimeter))
-        # Both cases
+            # Check if user wants perimeter as well
+            if info_check[1] == "p":
+                side = number_checker("What is the side length? ", "Please enter a number above 0", float)
+            # If only area
+            else:
+                side = 0
+        # Perimeter scenario
         else:
-            # Find height and side as well as area and perimeter
-            height = number_checker("What is the height? ", "Please enter a number above 0", float)
             side = number_checker("What is the side length? ", "Please enter a number above 0", float)
-            area = base * height
-            perimeter = 2 * (side + base)
-            print("The area of your parallelogram is {:.2f}".format(area))
-            print("The perimeter of your parallelogram is {:.2f}".format(perimeter))
-        print()
+            height = 0
+        
+        # ------------- Calculations -------------
+        area = base * height
+        perimeter = 2 * (side + base)
 
+        # Area
+        if height != 0:
+            print("The area of your parallelogram is {:.2f}".format(area))
+            # Perimeter as well
+            if side != 0:
+                print("The perimeter of your parallelogram is {:.2f}".format(perimeter))
+            else:
+                perimeter = "N/A"
+        # Perimeter only
+        else:
+            print("The perimeter of your parallelogram is {:.2f}".format(perimeter))
+            area = "N/A"
+        print()
         # return this until I put in a list for history
         return ""
 
@@ -93,6 +101,7 @@ def parallelogram():
 
 what_shape = "parallelogram"
 
+# Loop for testing purposes
 for item in range(0,3):
     if what_shape == "parallelogram":
         result = parallelogram()

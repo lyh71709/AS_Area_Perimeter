@@ -2,7 +2,6 @@
 # v2 - The previous component was just a basic three if conditions and then ask accordingly
 #      But I prefer this method because personally even though it might basically be the same length it is more clean and neat.
 
-import math
 
 # number checker function goes here
 # Checks that it is not 0 and is a number
@@ -59,7 +58,6 @@ def parallelogram():
         # Find what the user is looking for
         info = input("What do you want to find out [Area(a)] or [Perimeter(p)] or [Both(ap)]? ").lower()
         info_check = string_checker(info, [["a ", "a"], [" p", "p"], ["ap"]], "Please say either 'a' for area or 'p' for perimeter")
-        print(info_check)
         if info_check == "invalid choice":
             continue
         

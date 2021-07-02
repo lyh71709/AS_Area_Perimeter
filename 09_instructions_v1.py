@@ -36,7 +36,7 @@ def string_checker(choice, options, error):
 # Asks if user wants instructions then print accordingly
 def instructions():
     # Title
-    print("========== Welcome to the Area and Perimeter Calcualtor ==========\n")
+    print("========== Welcome to the Area and Perimeter Calculator ==========\n")
     print(" 🤖 HENRYB⚙T: Hello, My Name is HENRYB⚙T\n")
 
     # Ask if user wants the instructions

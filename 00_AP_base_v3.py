@@ -1,7 +1,9 @@
 # Area And Perimeter Base Code
+# v2 - implement os and clear to make the  look cleaner
 
 import math
 import pandas
+import os
 
 
 # number checker function goes here
@@ -86,28 +88,34 @@ def get_shape():
 
 # rectangle function goes here
 # Find the base and height then calculate area and perimeter
-def rectangle():
+def rectangle(squ_or_rec):
     valid = False
     while not valid:
         
-        # Get base and height
-        base = number_checker("What is the base? ", "Please enter a number above 0", float)
-        height = number_checker("What is the height? ", "Please enter a number above 0", float)
-        recorded_info = ("Base: {} | Height: {}".format(base, height))
+        # Finds out if the user wanted a square or not
+        # If so then only ask for a base
+        if squ_or_rec == "Square":
+            base = number_checker("What is the base? ", "Please enter a number above 0", float)
+            recorded_info = ("Base: {}".format(base))
 
-        # ------------- Calculations -------------
-        area = base * height
-        perimeter = (2 * base) + (2 * height)
-
-        # Check if it is a square
-        if base == height:
-            squ_or_rec = "square"
+            # ------------- Calculations -------------
+            area = base**2
+            perimeter = base*4
+        # If user wants a rectangle
         else:
-            squ_or_rec = "rectangle"
+            # Get base and height
+            base = number_checker("What is the base? ", "Please enter a number above 0", float)
+            height = number_checker("What is the height? ", "Please enter a number above 0", float)
+            recorded_info = ("Base: {} | Height: {}".format(base, height))
+
+            # ------------- Calculations -------------
+            area = base * height
+            perimeter = (2 * base) + (2 * height)
 
         # Print with appropriate shape name
         print("The area of your {} is {:.2f}".format(squ_or_rec, area))
         print("The perimeter of your {} is {:.2f}".format(squ_or_rec, perimeter))
+        print()
 
         # return this for use in history
         return ["Rectangle", area, perimeter, recorded_info]
@@ -152,10 +160,18 @@ def triangle():
             # Do Heron's Law and the sum of all the side lengths for perimeter
             s = (a + b + c) / 2
             perimeter = a + b + c
-            area = math.sqrt(s * (s-a) * (s-b) * (s-c))
 
-            print("The area of your triangle is {:.2f}".format(area))
-            print("The perimeter of your triangle is {:.2f}".format(perimeter))
+            # Try statement to take into account the impossible triangle problem and math error
+            try:
+                # When the math works
+                area = math.sqrt(s * (s-a) * (s-b) * (s-c))
+                print("The area of your triangle is {:.2f}".format(area))
+                print("The perimeter of your triangle is {:.2f}".format(perimeter))
+            except ValueError:
+                # When an impossible triangle is created
+                print("The triangle you entered is a triangle that cannot exist")
+                area = "N/A"
+                perimeter = "N/A"
 
         # return this for use in history
         return ["Triangle", area, perimeter, recorded_info]
@@ -335,24 +351,78 @@ def instructions():
         # Return nothing because nothing is needed
         return ""
 
+
+# convert_unit function goes here
+# Converts units and number appropriately according to what the user wants
+def convert_unit(desired_unit, answer):
+    # Set up lists to call, and have an index for units and all possible integers
+    # The units are split up so that the spacing between the can determine the power of ten that they need to be mulitplied by
+    unit_list = ["km", "", "", "m", "", "cm", "mm"]
+    number_list = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+
+    # This is when no unit at the back is given so it will autimatically assume that the unit is already in the desired unit form
+    if answer[len(answer)-1] in number_list:
+        # is the same as the number provided
+        num = answer
+        # unit is already in the form of desired unit
+        unit = desired_unit
+    # When the user has a put a specific unit at the back and is metres "m"
+    # Checks this becasue all the units are two characters except for metres so I have to check this.
+    else:
+        # Finds the last character
+        num = answer[:len(answer)-1]
+        unit = answer[len(answer)-1]
+        # If the unit is anything but metres "m"
+        # Finds the second to last character and checks if it is not a number
+        if answer[len(answer)-2] not in number_list:
+            # Finds the second to last character
+            num = answer[:len(answer)-2]
+            unit = answer[len(answer)-2:]
+
+    # Find the power that the unit conversion needs to be.
+    index1 = unit_list.index(unit)
+    index2 = unit_list.index(desired_unit)
+    
+    num = int(num)
+    power = int(index2 - index1)
+
+    converted_num = num*(10**power)
+    # Return outcome (converted unit)
+    return "{}{}".format(converted_num, desired_unit)
+
+
 # Main Routine
 history = []
 
-# Call Instructions function
+# Clears the terminal
+clear = lambda:os.system('cls')
+clear()
+
+# Begins intstructions
 have_instruction = instructions()
 
 # Whole main routine loop
 keep_going = ""
 while keep_going == "":
-    # Get the user's desired shape
+    # Get user's desired shape
     what_shape = get_shape()
+
+    # Get user's desired unit
+    unit_valid = False
+    while not unit_valid:
+        what_unit = input("What unit do you want to do your calculations in? ").lower()
+        check_unit = string_checker(what_unit, [["km"], ["m"], ["cm"], ["mm"]], "Please enter a valid unit either 'm', 'cm', 'km' or 'mm'")
+        if check_unit == "invalid choice":
+            continue
+        else:
+            break
 
     # Checks if it is a Triangle
     if what_shape == "Triangle":
         result = triangle()
     # Checks if it is a rectangle or square
     elif what_shape == "Rectangle" or what_shape == "Square":
-        result = rectangle()
+        result = rectangle(what_shape)
     # Checks if it is a circle
     elif what_shape == "Circle":
         result = circle()
@@ -368,10 +438,10 @@ while keep_going == "":
     # Exit Loop or loop again
     keep_going = input("\nIf you want to continue press enter or any other key to quit: ")
 
-# Puts the information in a pandas dataframe to be printed out as a table
+# Puts results in a dataframe
 print()
 print("=============== History ===============\n")
 history_frame = pandas.DataFrame(history, columns=["Shape", "Area", "Perimeter", "Info"])
 
-# Prints dataframe
+# Print Dataframe
 print(history_frame)

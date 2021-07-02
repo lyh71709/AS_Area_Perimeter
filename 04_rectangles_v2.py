@@ -1,8 +1,6 @@
 # Component 4 - implement rectangle function
 # v2 - rename the print statement to square if the base == height
 
-import math
-
 # number checker function goes here
 # Checks that it is not 0 and is a number
 def number_checker(question, error, num_type):

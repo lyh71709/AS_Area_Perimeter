@@ -88,28 +88,34 @@ def get_shape():
 
 # rectangle function goes here
 # Find the base and height then calculate area and perimeter
-def rectangle():
+def rectangle(squ_or_rec):
     valid = False
     while not valid:
         
-        # Get base and height
-        base = number_checker("What is the base? ", "Please enter a number above 0", float)
-        height = number_checker("What is the height? ", "Please enter a number above 0", float)
-        recorded_info = ("Base: {} | Height: {}".format(base, height))
+        # Finds out if the user wanted a square or not
+        # If so then only ask for a base
+        if squ_or_rec == "Square":
+            base = number_checker("What is the base? ", "Please enter a number above 0", float)
+            recorded_info = ("Base: {}".format(base))
 
-        # ------------- Calculations -------------
-        area = base * height
-        perimeter = (2 * base) + (2 * height)
-
-        # Check if it is a square
-        if base == height:
-            squ_or_rec = "square"
+            # ------------- Calculations -------------
+            area = base**2
+            perimeter = base*4
+        # If user wants a rectangle
         else:
-            squ_or_rec = "rectangle"
+            # Get base and height
+            base = number_checker("What is the base? ", "Please enter a number above 0", float)
+            height = number_checker("What is the height? ", "Please enter a number above 0", float)
+            recorded_info = ("Base: {} | Height: {}".format(base, height))
+
+            # ------------- Calculations -------------
+            area = base * height
+            perimeter = (2 * base) + (2 * height)
 
         # Print with appropriate shape name
         print("The area of your {} is {:.2f}".format(squ_or_rec, area))
         print("The perimeter of your {} is {:.2f}".format(squ_or_rec, perimeter))
+        print()
 
         # return this for use in history
         return ["Rectangle", area, perimeter, recorded_info]
@@ -154,10 +160,18 @@ def triangle():
             # Do Heron's Law and the sum of all the side lengths for perimeter
             s = (a + b + c) / 2
             perimeter = a + b + c
-            area = math.sqrt(s * (s-a) * (s-b) * (s-c))
 
-            print("The area of your triangle is {:.2f}".format(area))
-            print("The perimeter of your triangle is {:.2f}".format(perimeter))
+            # Try statement to take into account the impossible triangle problem and math error
+            try:
+                # When the math works
+                area = math.sqrt(s * (s-a) * (s-b) * (s-c))
+                print("The area of your triangle is {:.2f}".format(area))
+                print("The perimeter of your triangle is {:.2f}".format(perimeter))
+            except ValueError:
+                # When an impossible triangle is created
+                print("The triangle you entered is a triangle that cannot exist")
+                area = "N/A"
+                perimeter = "N/A"
 
         # return this for use in history
         return ["Triangle", area, perimeter, recorded_info]
@@ -230,7 +244,7 @@ def parallelogram():
             side = number_checker("What is the side length? ", "Please enter a number above 0", float)
             height = 0
             recorded_info = ("Base: {} | Side: {}".format(base, side))
-        
+
         # ------------- Calculations -------------
         area = base * height
         perimeter = 2 * (side + base)
@@ -241,9 +255,12 @@ def parallelogram():
             # Perimeter as well
             if side != 0:
                 print("The perimeter of your parallelogram is {:.2f}".format(perimeter))
+            else:
+                perimeter = "N/A"
         # Perimeter only
         else:
             print("The perimeter of your parallelogram is {:.2f}".format(perimeter))
+            area = "N/A"
         print()
         # return this for use in history
         return ["Parallelogram", area, perimeter, recorded_info]
@@ -305,7 +322,7 @@ def trapezium():
 # Asks if user wants instructions then print accordingly
 def instructions():
     # Title
-    print("========== Welcome to the Area and Perimeter Calcualtor ==========\n")
+    print("========== Welcome to the Area and Perimeter Calculator ==========\n")
     print(" HENRYB0T: Hello, My Name is HENRYB0T\n")
 
     # Ask if user wants the instructions
@@ -358,7 +375,7 @@ while keep_going == "":
         result = triangle()
     # Checks if it is a rectangle or square
     elif what_shape == "Rectangle" or what_shape == "Square":
-        result = rectangle()
+        result = rectangle(what_shape)
     # Checks if it is a circle
     elif what_shape == "Circle":
         result = circle()
