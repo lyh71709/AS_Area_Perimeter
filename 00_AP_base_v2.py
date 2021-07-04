@@ -275,13 +275,14 @@ def trapezium():
         # Find what the user is looking for
         info = input("What do you want to find out [Area(a)] or [Perimeter(p)] or [Both(ap)]? ").lower()
         info_check = string_checker(info, [["a ", "a"], [" p", "p"], ["ap"]], "Please say either 'a' for area or 'p' for perimeter")
+        print(info_check)
         if info_check == "invalid choice":
             continue
         
         # base is needed in all cases so it is outside the if statement
         base_a = number_checker("What is the first base? ", "Please enter a number above 0", float)
         base_b = number_checker("What is the second base? ", "Please enter a number above 0", float)
-        # Check if user wants perimeter
+        # Check if user wants area
         if info_check[1] == "p" or info_check[1] == "P":
             side_c = number_checker("What is the first side length? ", "Please enter a number above 0", float)
             side_d = number_checker("What is the second side length? ", "Please enter a number above 0", float)
@@ -310,9 +311,12 @@ def trapezium():
             # Perimeter as well
             if side_c != 0:
                 print("The perimeter of your trapezium is {:.2f}".format(perimeter))
+            else:
+                perimeter = "N/A"
         # Perimeter only
         else:
             print("The perimeter of your trapezium is {:.2f}".format(perimeter))
+            area = "N/A"
         print()
         # return this for use in history
         return ["Trapezium", area, perimeter, recorded_info]
@@ -353,6 +357,7 @@ def instructions():
               " HENRYB0T: Have Fun, I will shut up now\n")
         # Return nothing because nothing is needed
         return ""
+
 
 # Main Routine
 history = []

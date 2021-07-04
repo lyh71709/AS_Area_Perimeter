@@ -244,7 +244,7 @@ def parallelogram():
             side = number_checker("What is the side length? ", "Please enter a number above 0", float)
             height = 0
             recorded_info = ("Base: {} | Side: {}".format(base, side))
-        
+
         # ------------- Calculations -------------
         area = base * height
         perimeter = 2 * (side + base)
@@ -255,9 +255,12 @@ def parallelogram():
             # Perimeter as well
             if side != 0:
                 print("The perimeter of your parallelogram is {:.2f}".format(perimeter))
+            else:
+                perimeter = "N/A"
         # Perimeter only
         else:
             print("The perimeter of your parallelogram is {:.2f}".format(perimeter))
+            area = "N/A"
         print()
         # return this for use in history
         return ["Parallelogram", area, perimeter, recorded_info]
@@ -272,13 +275,14 @@ def trapezium():
         # Find what the user is looking for
         info = input("What do you want to find out [Area(a)] or [Perimeter(p)] or [Both(ap)]? ").lower()
         info_check = string_checker(info, [["a ", "a"], [" p", "p"], ["ap"]], "Please say either 'a' for area or 'p' for perimeter")
+        print(info_check)
         if info_check == "invalid choice":
             continue
         
         # base is needed in all cases so it is outside the if statement
         base_a = number_checker("What is the first base? ", "Please enter a number above 0", float)
         base_b = number_checker("What is the second base? ", "Please enter a number above 0", float)
-        # Check if user wants perimeter
+        # Check if user wants area
         if info_check[1] == "p" or info_check[1] == "P":
             side_c = number_checker("What is the first side length? ", "Please enter a number above 0", float)
             side_d = number_checker("What is the second side length? ", "Please enter a number above 0", float)
@@ -307,9 +311,12 @@ def trapezium():
             # Perimeter as well
             if side_c != 0:
                 print("The perimeter of your trapezium is {:.2f}".format(perimeter))
+            else:
+                perimeter = "N/A"
         # Perimeter only
         else:
             print("The perimeter of your trapezium is {:.2f}".format(perimeter))
+            area = "N/A"
         print()
         # return this for use in history
         return ["Trapezium", area, perimeter, recorded_info]
@@ -352,45 +359,6 @@ def instructions():
         return ""
 
 
-# convert_unit function goes here
-# Converts units and number appropriately according to what the user wants
-def convert_unit(desired_unit, answer):
-    # Set up lists to call, and have an index for units and all possible integers
-    # The units are split up so that the spacing between the can determine the power of ten that they need to be mulitplied by
-    unit_list = ["km", "", "", "m", "", "cm", "mm"]
-    number_list = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-
-    # This is when no unit at the back is given so it will autimatically assume that the unit is already in the desired unit form
-    if answer[len(answer)-1] in number_list:
-        # is the same as the number provided
-        num = answer
-        # unit is already in the form of desired unit
-        unit = desired_unit
-    # When the user has a put a specific unit at the back and is metres "m"
-    # Checks this becasue all the units are two characters except for metres so I have to check this.
-    else:
-        # Finds the last character
-        num = answer[:len(answer)-1]
-        unit = answer[len(answer)-1]
-        # If the unit is anything but metres "m"
-        # Finds the second to last character and checks if it is not a number
-        if answer[len(answer)-2] not in number_list:
-            # Finds the second to last character
-            num = answer[:len(answer)-2]
-            unit = answer[len(answer)-2:]
-
-    # Find the power that the unit conversion needs to be.
-    index1 = unit_list.index(unit)
-    index2 = unit_list.index(desired_unit)
-    
-    num = int(num)
-    power = int(index2 - index1)
-
-    converted_num = num*(10**power)
-    # Return outcome (converted unit)
-    return "{}{}".format(converted_num, desired_unit)
-
-
 # Main Routine
 history = []
 
@@ -406,16 +374,6 @@ keep_going = ""
 while keep_going == "":
     # Get user's desired shape
     what_shape = get_shape()
-
-    # Get user's desired unit
-    unit_valid = False
-    while not unit_valid:
-        what_unit = input("What unit do you want to do your calculations in? ").lower()
-        check_unit = string_checker(what_unit, [["km"], ["m"], ["cm"], ["mm"]], "Please enter a valid unit either 'm', 'cm', 'km' or 'mm'")
-        if check_unit == "invalid choice":
-            continue
-        else:
-            break
 
     # Checks if it is a Triangle
     if what_shape == "Triangle":
