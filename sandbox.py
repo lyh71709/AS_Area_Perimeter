@@ -12,6 +12,7 @@ def number_checker(question, error, num_type):
                 num = response[:len(response)-2]
             else:
                 num = response[:len(response)-1]
+            return num
 
         else:
             try:
@@ -26,8 +27,10 @@ def number_checker(question, error, num_type):
                 print(error)
 
 # Main Routine
-height = number_checker("What is the height? ", "This must be a number and is more than 0", float)
-base = number_checker("What is the base? ", "This must be a number and is more than 0", float)
+height = number_checker("What is the height? ", "This must be a number and is more than 0", "unit")
+base = number_checker("What is the base? ", "This must be a number and is more than 0", "unit")
+print(base)
+print(height)
 area = height * base
 
 print("{} x {} = {}".format(base, height, area))

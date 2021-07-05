@@ -1,5 +1,6 @@
 # Nice to Have 1 - Units of Measurement
 # Try to add a way of including units of measurement in the program
+# v2 - Do this instead of brute force check
 
 
 # convert_unit function goes here

@@ -1,4 +1,5 @@
 # Component 1a - make a string checker for the base component
+# same as the one for FRC
 
 # string_checker function goes here
 # Ensures that an input is within the possible results

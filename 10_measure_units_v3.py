@@ -1,10 +1,26 @@
 # Nice to Have 1 - Units of Measurement
 # Try to add a way of including units of measurement in the program
+# v2 - Do this instead of brute force check
+# v3 - Add another function to put rly big or rly small numbers in standard form
 
+# convert_standard function goes here
+# Converts integers/floats with greater than 6 digits to standard form
+def convert_standard(num):
+    # Finds the length of given integer/float
+    length = len(str(num).replace('.',''))
+
+    # Checks if length greater than 6 (can be changed)
+    if length <= 6:
+        return num
+    else:
+        # Writes number in standard form
+        standard_num = format(num, "5.2e")
+        return standard_num
 
 # convert_unit function goes here
 # Converts units and number appropriately according to what the user wants
 def convert_unit(desired_unit, answer):
+    
     # Set up lists to call, and have an index for units and all possible integers
     # The units are split up so that the spacing between the can determine the power of ten that they need to be mulitplied by
     unit_list = ["km", "", "", "m", "", "cm", "mm"]
@@ -37,8 +53,9 @@ def convert_unit(desired_unit, answer):
     power = float(index2 - index1)
 
     converted_num = num*(10**power)
-    print(len(converted_num))
-    num_with_unit = "{}{}".format(converted_num,desired_unit)
+    standard_num = convert_standard(converted_num)
+    num_with_unit = "{}{}".format(standard_num,desired_unit)
+
     # Return outcome (converted unit)
     return [converted_num, desired_unit, num_with_unit]
     
