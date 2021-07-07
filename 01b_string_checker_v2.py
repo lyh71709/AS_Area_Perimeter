@@ -36,7 +36,6 @@ def string_checker(question, options, error):
             print()
             continue
 
-
 # Main Routine
 valid_names = [["henry"], ["aref"], ["jt"]]
 

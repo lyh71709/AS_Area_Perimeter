@@ -3,7 +3,7 @@
 # v3 - change up some wording to make the program more usable
 # v4 - doesn't ask for area or perimeter and just prints both
 # v5 - solve the impossible triangle problem and change the return to make it history friendly
-# v6 - make the component unit capable
+# v6 - Add in basic units and also use the more efficient string checker
 
 import math
 
@@ -58,98 +58,40 @@ def string_checker(question, options, error):
             print()
             continue
 
-# convert_standard function goes here
-# Converts integers/floats with greater than 6 digits to standard form
-def convert_standard(num):
-    # Finds the length of given integer/float
-    length = len(str(num).replace('.',''))
-
-    # Checks if length greater than 6 (can be changed)
-    if length <= 6:
-        return num
-    else:
-        # Writes number in standard form
-        standard_num = format(num, "5.2e")
-        return standard_num
-
-# convert_unit function goes here
-# Converts units and number appropriately according to what the user wants
-def convert_unit(desired_unit, answer):
-    # Set up lists to call, and have an index for units and all possible integers
-    # The units are split up so that the spacing between the can determine the power of ten that they need to be mulitplied by
-    unit_list = ["km", "", "", "m", "", "cm", "mm"]
-    number_list = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-
-    # This is when no unit at the back is given so it will autimatically assume that the unit is already in the desired unit form
-    if answer[len(answer)-1] in number_list:
-        # is the same as the number provided
-        num = answer
-        # unit is already in the form of desired unit
-        unit = desired_unit
-    # When the user has a put a specific unit at the back and is metres "m"
-    # Checks this becasue all the units are two characters except for metres so I have to check this.
-    else:
-        # Finds the last character
-        num = answer[:len(answer)-1]
-        unit = answer[len(answer)-1]
-        # If the unit is anything but metres "m"
-        # Finds the second to last character and checks if it is not a number
-        if answer[len(answer)-2] not in number_list:
-            # Finds the second to last character
-            num = answer[:len(answer)-2]
-            unit = answer[len(answer)-2:]
-
-    # Find the power that the unit conversion needs to be.
-    index1 = unit_list.index(unit)
-    index2 = unit_list.index(desired_unit)
-    
-    num = float(num)
-    power = float(index2 - index1)
-
-    converted_num = num*(10**power)
-    standard_num = convert_standard(converted_num)
-    num_with_unit = "{}{}".format(standard_num,desired_unit)
-
-    # Return outcome (converted unit)
-    return [converted_num, desired_unit, num_with_unit]
-
 # triangle function goes here
 # Figures out what the question gives and calculates the area and perimeter
-def triangle(unit):
+def triangle():
 
     valid = False
     while not valid:
 
         # Find what the user is given
-        info = string_checker(("What do you know about the triangle [Base and height(bh)] or [the side lengths(abc)]? ").lower(), [["bh"], ["abc"]], "Please say either 'bh' for base and height or 'abc' for side lengths")
-        if info == "invalid choice":
-            continue
+        info = string_checker("What do you know about the triangle [Base and height(bh)] or [the side lengths(abc)]? ", [["bh"], ["abc"]], "Please say either 'bh' for base and height or 'abc' for side lengths")
 
         # ------------- Calculations -------------
         # If base and height is given
         if info == "Bh":
 
             # Find Base and height
-            base = input("What is the base? ").lower()
-            height = input("What is the height? ").lower()
-            converted_base = convert_unit(unit ,base)
-            converted_height = convert_unit(unit, height)
-
-            recorded_info = ("Base: {} | Height: {}".format(converted_base[2], converted_height[2]))
+            base = number_checker("What is the base? ", "Please enter a number bigger than 0", float)
+            height = number_checker("What is the height? ", "Please enter a number bigger than 0", float)
+            recorded_info = ("Base: {} | Height: {}".format(base, height))
                 
-            area = 0.5 * converted_base[0] * converted_height[0]
-            standard_area = convert_standard(area)
+            area = 0.5 * base * height
             perimeter = "N/A"
 
-            print("The area of your triangle is {}{}^2".format(standard_area, unit))
+            if area != 1:
+                print("The area of your triangle is {:.2f} units^2".format(area))
+            else:
+                print("The area of your triangle is {:.2f} unit^2".format(area))
             print("I can't find the perimeter with only base and height")
 
         # If triangle side lengths are given
         else:
             # Find triangle side lengths
-            a = input()
-            b = input()
-            c = input()
+            a = number_checker("What is the length of a? ", "Please enter a number bigger than 0", float)
+            b = number_checker("What is the length of b? ", "Please enter a number bigger than 0", float)
+            c = number_checker("What is the length of c? ", "Please enter a number bigger than 0", float)
             recorded_info = ("A: {} | B: {} | C: {}".format(a, b, c))
 
             # Do Heron's Law and the sum of all the side lengths for perimeter
@@ -160,8 +102,12 @@ def triangle(unit):
             try:
                 # When the math works
                 area = math.sqrt(s * (s-a) * (s-b) * (s-c))
-                print("The area of your triangle is {:.2f}".format(area))
-                print("The perimeter of your triangle is {:.2f}".format(perimeter))
+                if area != 1:
+                    print("The area of your triangle is {:.2f} units^2".format(area))
+                    print("The perimeter of your triangle is {:.2f} units".format(perimeter))
+                else:
+                    print("The area of your triangle is {:.2f} unit^2".format(area))
+                    print("The perimeter of your triangle is {:.2f} unit".format(perimeter))
             except ValueError:
                 # When an impossible triangle is created
                 print("The triangle you entered is a triangle that cannot exist")
@@ -175,11 +121,10 @@ def triangle(unit):
 # Main Routine
 # Set the shape as triangle to make testing easier seeing as how this is the triangle component
 what_shape = "Triangle"
-what_unit = input("Unit: ")
 
 # Loop for testing purposes
 for item in range(0,1):
     # Triangle Scenario
     if what_shape == "Triangle":
-        result = triangle(what_unit)
+        result = triangle()
     print()
