@@ -30,7 +30,7 @@ def rectangle(squ_or_rec):
         # Finds out if the user wanted a square or not
         # If so then only ask for a base
         if squ_or_rec == "Square":
-            base = number_checker("What is the base? ", "Please enter a number above 0", float)
+            base = number_checker("What is the base? ", " HENRYB0T: Please enter a number above 0", float)
             recorded_info = ("Base: {}".format(base))
 
             # ------------- Calculations -------------
@@ -39,15 +39,19 @@ def rectangle(squ_or_rec):
         # If user wants a rectangle
         else:
             # Get base and height
-            base = number_checker("What is the base? ", "Please enter a number above 0", float)
-            height = number_checker("What is the height? ", "Please enter a number above 0", float)
+            base = number_checker("What is the base? ", " HENRYB0T: Please enter a number above 0", float)
+            height = number_checker("What is the height? ", " HENRYB0T: Please enter a number above 0", float)
             recorded_info = ("Base: {} | Height: {}".format(base, height))
+            if base == height:
+                print("HENRYB0T: Um that is actually a square :|\n")
+                squ_or_rec = "Square"
 
             # ------------- Calculations -------------
             area = base * height
             perimeter = (2 * base) + (2 * height)
 
         # Print with appropriate shape name
+        # Checks for pluralisation
         if area != 1:
             print("The area of your {} is {:.2f} units^2".format(squ_or_rec, area))
         else:

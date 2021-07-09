@@ -62,16 +62,16 @@ def parallelogram():
     while not valid:
 
         # Find what the user is looking for
-        info = string_checker("What do you want to find out [Area(a)] or [Perimeter(p)] or [Both(ap)]? ", [["a ", "a"], [" p", "p"], ["ap"]], "Please say either 'a' for area or 'p' for perimeter")
+        info = string_checker("What do you want to find out [Area(a)] or [Perimeter(p)] or [Both(ap)]? ", [["a ", "a"], [" p", "p"], ["ap"]], " HENRYB0T: Please say either 'a' for area or 'p' for perimeter")
         
         # base is needed in all cases so it is outside the if statement
-        base = number_checker("What is the base? ", "Please enter a number above 0", float)
+        base = number_checker("What is the base? ", " HENRYB0T: Please enter a number above 0", float)
         # Check if user wants area
         if info[0] == "A":
-            height = number_checker("What is the height? ", "Please enter a number above 0", float)
+            height = number_checker("What is the height? ", " HENRYB0T: Please enter a number above 0", float)
             # Check if user wants perimeter as well
             if info[1] == "p":
-                side = number_checker("What is the side length? ", "Please enter a number above 0", float)
+                side = number_checker("What is the side length? ", " HENRYB0T: Please enter a number above 0", float)
                 recorded_info = ("Base: {} | Height: {} | Side: {}".format(base, height, side))
             # If only area
             else:
@@ -79,7 +79,7 @@ def parallelogram():
                 recorded_info = ("Base: {} | Height: {}".format(base, height))
         # Perimeter scenario
         else:
-            side = number_checker("What is the side length? ", "Please enter a number above 0", float)
+            side = number_checker("What is the side length? ", " HENRYB0T: Please enter a number above 0", float)
             height = 0
             recorded_info = ("Base: {} | Side: {}".format(base, side))
         
@@ -88,17 +88,26 @@ def parallelogram():
         perimeter = 2 * (side + base)
 
         # Area
+        # Also ensures that area and perimeter is pluralised properly
         if height != 0:
             if area != 1:
-                print("The area of your parallelogram is {:.2f}".format(area))
+                print("The area of your parallelogram is {:.2f} units^2".format(area))
+            else:
+                print("The area of your parallelogram is {:.2f} unit^2".format(area))
             # Perimeter as well
             if side != 0:
-                print("The perimeter of your parallelogram is {:.2f}".format(perimeter))
+                if perimeter != 1:
+                    print("The perimeter of your parallelogram is {:.2f} units".format(perimeter))
+                else:
+                    print("The perimeter of your parallelogram is {:.2f} unit".format(perimeter))
             else:
                 perimeter = "N/A"
         # Perimeter only
         else:
-            print("The perimeter of your parallelogram is {:.2f}".format(perimeter))
+            if perimeter != 1:
+                print("The perimeter of your parallelogram is {:.2f} units".format(perimeter))
+            else:
+                print("The perimeter of your parallelogram is {:.2f} unit".format(perimeter))
             area = "N/A"
         print()
         # return this for use in history

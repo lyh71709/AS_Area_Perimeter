@@ -64,18 +64,18 @@ def circle():
     while not valid:
         
         # Find what the user is given
-        info = string_checker("What do you know about the circle [radius(r)] or [diameter(d)]? ", [["r"], ["d"]], "Please say either 'r' for radius or 'd' for diameter")
+        info = string_checker("What do you know about the circle [radius(r)] or [diameter(d)]? ", [["r"], ["d"]], " HENRYB0T: Please say either 'r' for radius or 'd' for diameter")
 
         # Diameter case
         if info == "D":
-            diameter = number_checker("What is the diameter? ", "Please enter a number above 0", float)
+            diameter = number_checker("What is the diameter? ", " HENRYB0T: Please enter a number above 0", float)
             print(" HENRYB0T: Did You know that diameter is double the radius of the circle? So all you need to do to find the radius is hafl the diameter :)")
             # radius is diameter divided by 2
             r = diameter / 2
             recorded_info = ("Diameter: {}".format(diameter))
         # Radius Case
         else:
-            radius = number_checker("What is the radius? ", "Please enter a number above 0", float)
+            radius = number_checker("What is the radius? ", " HENRYB0T: Please enter a number above 0", float)
             r = radius
         recorded_info = ("Radius: {}".format(r))
 
@@ -83,6 +83,7 @@ def circle():
         circumference = 2 * (math.pi) * r
         area = (math.pi) * r**2
 
+        # Checks for pluralisation
         if area != 1:
             print("The area of your circle is {:.2f} units^2".format(area))
         else:
@@ -95,7 +96,8 @@ def circle():
         print()
 
         # return this for use in history
-        return ["Circle", area, circumference, recorded_info]
+        # {:.2f} so that in history it will display with only two dp
+        return ["Circle", "{:.2f}".format(area), "{:.2f}".format(circumference), recorded_info]
 
 # Main Routine
 

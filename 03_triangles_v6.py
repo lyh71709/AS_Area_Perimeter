@@ -66,25 +66,29 @@ def triangle():
     while not valid:
 
         # Find what the user is given
-        info = string_checker("What do you know about the triangle [Base and height(bh)] or [the side lengths(abc)]? ", [["bh"], ["abc"]], "Please say either 'bh' for base and height or 'abc' for side lengths")
+        info = string_checker("What do you know about the triangle [Base and height(bh)] or [the side lengths(abc)]? ", [["bh"], ["abc"]], " HENRYB0T: Please say either 'bh' for base and height or 'abc' for side lengths")
 
         # ------------- Calculations -------------
         # If base and height is given
         if info == "Bh":
 
             # Find Base and height
-            base = number_checker("What is the base? ", "Please enter a number bigger than 0", float)
-            height = number_checker("What is the height? ", "Please enter a number bigger than 0", float)
+            base = number_checker("What is the base? ", " HENRYB0T: Please enter a number bigger than 0", float)
+            height = number_checker("What is the height? ", " HENRYB0T: Please enter a number bigger than 0", float)
             recorded_info = ("Base: {} | Height: {}".format(base, height))
                 
+            # Calculations
             area = 0.5 * base * height
             perimeter = "N/A"
 
+            # Checks if the area isn't one
             if area != 1:
+                # Plural
                 print("The area of your triangle is {:.2f} units^2".format(area))
             else:
+                # Non Plural
                 print("The area of your triangle is {:.2f} unit^2".format(area))
-            print("I can't find the perimeter with only base and height")
+            print(" HENRYB0T: I can't find the perimeter with only base and height")
 
         # If triangle side lengths are given
         else:
@@ -102,15 +106,21 @@ def triangle():
             try:
                 # When the math works
                 area = math.sqrt(s * (s-a) * (s-b) * (s-c))
+                # Checks if the area is not 1
                 if area != 1:
-                    print("The area of your triangle is {:.2f} units^2".format(area))
-                    print("The perimeter of your triangle is {:.2f} units".format(perimeter))
+                    print("The area of your triangle is {:.2f} units^2".format(area))     
                 else:
                     print("The area of your triangle is {:.2f} unit^2".format(area))
+                
+                # Checks if perimeter is not 1
+                if perimeter != 1:
+                    print("The perimeter of your triangle is {:.2f} units".format(perimeter))
+                else:
                     print("The perimeter of your triangle is {:.2f} unit".format(perimeter))
             except ValueError:
                 # When an impossible triangle is created
-                print("The triangle you entered is a triangle that cannot exist")
+                print(" HENRYB0T: The triangle you entered is a triangle that cannot exist")
+                # Set to N/A so that the history will display N/A
                 area = "N/A"
                 perimeter = "N/A"
 

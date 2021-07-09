@@ -1,5 +1,6 @@
 # Component 6 - implement trapezium function
 # v2 - Fix a similar problem that parallelogram_v3 fixed and make it history friendly
+# v4 - Make it say units and use more efficient string checker
 
 import math
 
@@ -56,22 +57,18 @@ def trapezium():
     while not valid:
 
         # Find what the user is looking for
-        info = input("What do you want to find out [Area(a)] or [Perimeter(p)] or [Both(ap)]? ").lower()
-        info_check = string_checker(info, [["a ", "a"], [" p", "p"], ["ap"]], "Please say either 'a' for area or 'p' for perimeter")
-        print(info_check)
-        if info_check == "invalid choice":
-            continue
+        info = string_checker("What do you want to find out [Area(a)] or [Perimeter(p)] or [Both(ap)]? ", [["a ", "a"], [" p", "p"], ["ap"]], " HENRYB0T: Please say either 'a' for area or 'p' for perimeter")
         
         # base is needed in all cases so it is outside the if statement
-        base_a = number_checker("What is the first base? ", "Please enter a number above 0", float)
+        base_a = number_checker("What is the first base? ", " HENRYB0T: Please enter a number above 0", float)
         base_b = number_checker("What is the second base? ", "Please enter a number above 0", float)
         # Check if user wants area
-        if info_check[1] == "p" or info_check[1] == "P":
-            side_c = number_checker("What is the first side length? ", "Please enter a number above 0", float)
-            side_d = number_checker("What is the second side length? ", "Please enter a number above 0", float)
+        if info[1] == "p" or info[1] == "P":
+            side_c = number_checker("What is the first side length? ", " HENRYB0T: Please enter a number above 0", float)
+            side_d = number_checker("What is the second side length? ", " HENRYB0T: Please enter a number above 0", float)
             # Check if user wants perimeter as well
-            if info_check[0] == "A":
-                height = number_checker("What is the height? ", "Please enter a number above 0", float)
+            if info[0] == "A":
+                height = number_checker("What is the height? ", " HENRYB0T: Please enter a number above 0", float)
                 recorded_info = ("A: {} | B: {} | C: {} | D: {} | Height: {}".format(base_a, base_b, side_c, side_d, height))
             # If only area
             else:
@@ -79,7 +76,7 @@ def trapezium():
                 recorded_info = ("A: {} | B: {} | C: {} | D: {}".format(base_a, base_b, side_c, side_d))
         # Perimeter scenario
         else:
-            height = number_checker("What is the height? ", "Please enter a number above 0", float)
+            height = number_checker("What is the height? ", " HENRYB0T: Please enter a number above 0", float)
             side_c = 0
             side_d = 0
             recorded_info = ("A: {} | B: {} | Height: {}".format(base_a, base_b, height))
@@ -89,16 +86,26 @@ def trapezium():
         perimeter = base_a + base_b + side_c + side_d
 
         # Area
+        # Also ensures that area and perimeter is pluralised properly
         if height != 0:
-            print("The area of your trapezium is {:.2f}".format(area))
+            if area != 1:
+                print("The area of your trapezium is {:.2f} units^2".format(area))
+            else:
+                print("The area of your trapezium is {:.2f} unit^2".format(area))
             # Perimeter as well
             if side_c != 0:
-                print("The perimeter of your trapezium is {:.2f}".format(perimeter))
+                if perimeter != 1:
+                    print("The perimeter of your trapezium is {:.2f} units".format(perimeter))
+                else:
+                    print("The perimeter of your trapezium is {:.2f} unit".format(perimeter))
             else:
                 perimeter = "N/A"
         # Perimeter only
         else:
-            print("The perimeter of your trapezium is {:.2f}".format(perimeter))
+            if perimeter != 1:
+                print("The perimeter of your trapezium is {:.2f} units".format(perimeter))
+            else:
+                print("The perimeter of your trapezium is {:.2f} unit".format(perimeter))
             area = "N/A"
         print()
         # return this for use in history

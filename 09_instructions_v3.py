@@ -1,36 +1,42 @@
 # Component 9 - Add instructions to make code more usable
 # v1 has emojis because emojis work on pycharm and not visual studio for some reason
 # v2 doesn't have emojis incase I need to use visual studio and has updated messages
+# v3 uses the more efficient string checker
 
 
 # string_checker function goes here
 # Ensures that an input is within the possible results
-def string_checker(choice, options, error):
-    for var_list in options:
+def string_checker(question, options, error):
+    valid = False
+    while not valid:
+        choice = input(question).lower()
 
-        # Blank case
-        if choice == "":
-            is_valid = "no"
-            break
-        # if the shape is in one of the lists, return the full list
-        elif choice in var_list:
+        for var_list in options:
 
-            # Get full name of shape and put it in title case
-            # so it looks nice when out putted
-            chosen = var_list[0].title()
-            is_valid = "yes"
-            break
+            # Blank case
+            if choice == "":
+                is_valid = "no"
+                break
+            # if the shape is in one of the lists, return the full list
+            elif choice in var_list:
 
-        # if the chosen shape is not valid
+                # Get full name of shape and put it in title case
+                # so it looks nice when out putted
+                chosen = var_list[0].title()
+                is_valid = "yes"
+                break
+
+            # if the chosen shape is not valid
+            else:
+                is_valid = "no"
+
+        # If shape is not OK - ask question again
+        if is_valid == "yes":
+            return chosen
         else:
-            is_valid = "no"
-
-    # If shape is not OK - ask question again
-    if is_valid == "yes":
-        return chosen
-    else:
-        print(error)
-        return "invalid choice"
+            print(error)
+            print()
+            continue
 
 
 # instructions funtion goes here
@@ -43,13 +49,10 @@ def instructions():
     # Ask if user wants the instructions
     valid = False
     while not valid:
-        need_instructions = input(" HENRYB0T: Would you like me to show you the instructions? ").lower()
-        need_instructions_check = string_checker(need_instructions, [["yes","y"], ["no","n"]], " HENRYB0T: Please Enter Yes or No\n")
-        if need_instructions_check == "invalid choice":
-            continue
+        need_instructions = string_checker(" HENRYB0T: Would you like me to show you the instructions? ", [["yes","y"], ["no","n"]], " HENRYB0T: Please Enter Yes or No\n")
 
         # No scenario
-        if need_instructions_check == "No":
+        if need_instructions == "No":
             print(" HENRYB0T: Fine")
         # Yes scenario
         else:
