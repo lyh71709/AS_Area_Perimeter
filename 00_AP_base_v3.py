@@ -373,7 +373,8 @@ def instructions():
                   " HENRYB0T: This program will calculate the area and perimeter of almost any shape you want.\n"
                   "            The available shapes are [Triangle, Square, Rectangle, Circle, Parallelogram and Trapeziums.\n"
                   "            You can enter the first letter or the first three letters, for example 'c' or 'cir' for circle.\n"
-                  "            or you can jsut put in the whole name but remember to spell it correctly.")
+                  "            or you can jsut put in the whole name but remember to spell it correctly.\n"
+                  "            *Please note that 't' will not work because it can be either triangle or trapezium so go more in depth for those. :)")
             print(" HENRYB0T: Depending on what shape you do I will need different types of information or else I can't do the\n"
                   "            calculations so make sure you have it.")
             print(" HENRYB0T: After a calculation the program will ask if you want to keep going, so just press enter if you do \n"
