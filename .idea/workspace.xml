@@ -20,11 +20,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="nolstagia.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/nolstagia.py">
+      <file leaf-file-name="09_instructions_v3.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/09_instructions_v3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-210">
-              <caret line="161" column="7" selection-start-line="161" selection-start-column="7" selection-end-line="161" selection-end-column="7" />
+            <state relative-caret-position="221">
+              <caret line="42" column="25" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -50,6 +50,7 @@
         <option value="$PROJECT_DIR$/00_AP_base_v1.py" />
         <option value="$PROJECT_DIR$/07_trapeziums_v1.py" />
         <option value="$PROJECT_DIR$/nolstagia.py" />
+        <option value="$PROJECT_DIR$/09_instructions_v3.py" />
       </list>
     </option>
   </component>
@@ -103,6 +104,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -123,8 +126,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -384,7 +385,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -423,11 +424,18 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/nolstagia.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/09_instructions_v1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -435,34 +443,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1037">
           <caret line="316" column="63" selection-start-line="316" selection-start-column="63" selection-end-line="316" selection-end-column="63" />
-          <folding>
-            <marker date="1625183100976" expanded="false" signature="32:57" ph="import ..." />
-            <marker date="1625183100976" expanded="true" signature="60:137" ph="..." />
-            <marker date="1625183100976" expanded="false" signature="184:457" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="223:457" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="237:404" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="460:550" ph="..." />
-            <marker date="1625183100976" expanded="false" signature="594:1260" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="670:785" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="818:1016" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="832:928" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="1207:1260" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="1263:1317" ph="..." />
-            <marker date="1625183100976" expanded="false" signature="1334:2205" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="1378:1635" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="1676:2181" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="2208:2299" ph="..." />
-            <marker date="1625183100976" expanded="false" signature="2316:3229" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="2355:3229" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="3232:3337" ph="..." />
-            <marker date="1625183100976" expanded="false" signature="3353:5373" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="3393:5373" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="3758:3838" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="5376:5471" ph="..." />
-            <marker date="1625183100976" expanded="false" signature="5485:6026" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="5524:6026" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="5909:6026" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -470,9 +450,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#408#678#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -480,7 +457,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -488,7 +464,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -496,22 +471,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/00_sandbox.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/00_sandbox.py" />
     <entry file="file://$PROJECT_DIR$/09_instructions_v1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -519,34 +486,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3145">
           <caret line="331" column="63" selection-start-line="331" selection-start-column="63" selection-end-line="331" selection-end-column="63" />
-          <folding>
-            <marker date="1625183100976" expanded="false" signature="32:57" ph="import ..." />
-            <marker date="1625183100976" expanded="true" signature="60:137" ph="..." />
-            <marker date="1625183100976" expanded="false" signature="184:457" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="223:457" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="237:404" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="460:550" ph="..." />
-            <marker date="1625183100976" expanded="false" signature="594:1260" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="670:785" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="818:1016" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="832:928" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="1207:1260" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="1263:1317" ph="..." />
-            <marker date="1625183100976" expanded="false" signature="1334:2205" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="1378:1635" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="1676:2181" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="2208:2299" ph="..." />
-            <marker date="1625183100976" expanded="false" signature="2316:3229" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="2355:3229" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="3232:3337" ph="..." />
-            <marker date="1625183100976" expanded="false" signature="3353:5373" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="3393:5373" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="3758:3838" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="5376:5471" ph="..." />
-            <marker date="1625183100976" expanded="false" signature="5485:6026" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="5524:6026" ph="..." />
-            <marker date="1625183100976" expanded="true" signature="5909:6026" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -554,16 +493,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
           <caret line="50" column="31" selection-start-line="50" selection-start-column="31" selection-end-line="50" selection-end-column="31" />
-          <folding>
-            <element signature="e#408#678#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/nolstagia.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-210">
+        <state relative-caret-position="102">
           <caret line="161" column="7" selection-start-line="161" selection-start-column="7" selection-end-line="161" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/09_instructions_v3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="42" column="25" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="25" />
           <folding />
         </state>
       </provider>
